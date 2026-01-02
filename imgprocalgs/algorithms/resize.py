@@ -8,12 +8,13 @@ import functools
 from PIL import Image as PillowImage
 from imgprocalgs.algorithms.utilities import Image, ImageData
 from imgprocalgs.visualisation.server import App
+from imgprocalgs.algorithms.base import ImageProcessingAlgorithm
 
 
-class ImageResizer(metaclass=abc.ABCMeta):
+class ImageResizer(ImageProcessingAlgorithm):
     """ Base class of resizing algorithms """
     def __init__(self, image_path: str, scale: float):
-        self.image = Image(image_path)
+        super().__init__(image_path)
         self.scale = scale
         self.new_image = None
 

@@ -5,11 +5,12 @@ from math import sqrt, pi, exp
 from typing import List
 
 from imgprocalgs.algorithms.utilities import create_empty_image
+from imgprocalgs.algorithms.base import ImageProcessingAlgorithm
 
 from imgprocalgs.algorithms.utilities import Image
 
 
-class TiltShift:
+class TiltShift(ImageProcessingAlgorithm):
     """ Tilt-shift technique """
     def __init__(self,
                  image_path: str,
@@ -18,10 +19,9 @@ class TiltShift:
                  max_blur: float,
                  sharpen_area_size: List=None):
 
-        self.image_path = image_path
+        super().__init__(image_path)
         self.destination_path = destination_path
-        self.input_image = Image(self.image_path)
-        self.pixels = self.input_image.pixels
+        self.pixels = self.image.pixels
 
         if not sharpen_area_size:
             sharpen_area_size = [0, 0]
@@ -60,7 +60,7 @@ class TiltShift:
         return value >= self.min_factor
 
     def process(self):
-        width, height = self.input_image.get_size()
+        width, height = self.image.get_size()
         output = create_empty_image(width, height)
         output_pixels = output.load()
 

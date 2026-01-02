@@ -2,7 +2,7 @@ from imgprocalgs.algorithms.genai import GenAIImageEnhancer, GenAIGhibliConverte
 import os
 
 def main():
-    api_key = "AIzaSyARJjf9XniykT07PMATaH_seYLCOAcaEMs"
+    api_key = "AIzaSyBf1KkfOPNTo3KX1tbQ52xKn_Xz7VCsUUg"
     image_path = r"C:\aguken_assighnment\imgprocalgs\tests\data\lena.jpg"
     
     if not os.path.exists(image_path):
